@@ -299,6 +299,8 @@ const styles = StyleSheet.create({
       width: 0,
       height: 10,
     },
+    borderWidth: 1,
+    borderColor: "#E2E2E2",
   },
   progressSectionContainer: {
     shadowOpacity: 0.05,
@@ -307,5 +309,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 10,
     },
+    borderWidth: 1,
+    borderColor: "#E2E2E2",
   },
 });
