@@ -19,6 +19,7 @@ interface SimpleImageCardProps {
   imgUri: string;
   width?: number;
   height?: number;
+  cornerRadius?: number;
 }
 
 type CustomProgressBarProps = {
@@ -138,6 +139,7 @@ export default function HomeScreen() {
                   imgUri={item.imgUri}
                   title={item.title}
                   subTitle={item.subtitle}
+                  cornerRadius={20}
                 />
               );
             }}
@@ -151,6 +153,7 @@ export default function HomeScreen() {
           backgroundColor={"#FCFCFC"}
           borderRadius={24}
           alignItems="center"
+          style={styles.progressSectionContainer}
         >
           {/* Avatar Image */}
           <Image
@@ -208,6 +211,7 @@ export default function HomeScreen() {
                     imgUri={item?.imgUri}
                     width={168}
                     height={186}
+                    cornerRadius={25}
                   />
                 );
               }}
@@ -224,21 +228,23 @@ export const SimpleImageCard: React.FC<SimpleImageCardProps> = ({
   title,
   subTitle,
   imgUri,
-  height = 310,
+  height = 400,
   width = 186,
+  cornerRadius,
 }) => {
   return (
     <YStack>
       <Card
-        elevate
         size="$4"
-        marginRight={"$2"}
+        marginRight={"$3"}
         animation="bouncy"
         width={width}
         height={height}
         scale={0.9}
         hoverStyle={{ scale: 0.925 }}
         pressStyle={{ scale: 0.875 }}
+        borderRadius={cornerRadius}
+        style={styles.card}
       >
         <Card.Background>
           <Image
@@ -250,13 +256,14 @@ export const SimpleImageCard: React.FC<SimpleImageCardProps> = ({
             style={{
               width,
               height,
-              borderRadius: 20, // Rounded corners
+              borderRadius: cornerRadius, // Rounded corners
               borderColor: "white",
               borderWidth: 10,
             }}
           />
         </Card.Background>
       </Card>
+
       <View style={{ marginLeft: 8, marginTop: 8 }}>
         {title && (
           <SizableText size="$4" marginTop="$3">
@@ -284,5 +291,21 @@ const styles = StyleSheet.create({
   progressBar: {
     height: "100%",
     borderRadius: 16,
+  },
+  card: {
+    shadowOpacity: 0.05,
+    shadowRadius: 0.2,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+  },
+  progressSectionContainer: {
+    shadowOpacity: 0.05,
+    shadowRadius: 0.2,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
   },
 });
